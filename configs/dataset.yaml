@@ -1,0 +1,10 @@
+# Roboflow'dan indirdikten sonra yolları kendi klasör yapına göre güncelle.
+path: ../data
+train: train/images
+val: valid/images
+test: test/images
+
+nc: 2
+names:
+  0: fire
+  1: smoke
