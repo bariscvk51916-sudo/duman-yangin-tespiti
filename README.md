@@ -1,58 +1,48 @@
-# Duman / Yangın Tespit Sistemi
+# Duman ve Yangın Tespiti
 
-Dijital Görüntü Çözümleme dönem projesi — YOLO ile duman ve yangın tespiti + Streamlit web arayüzü.
+Bu repo Dijital Görüntü Çözümleme dersi için yaptığım dönem projesi.
 
-## Proje Konusu
+Projede amacım kameradan veya yüklenen bir fotoğraftan duman ve yangın olup olmadığını tespit etmek. Plaka tanıma örneğine benzer mantıkta ilerledim ama konu olarak yangın/duman seçtim çünkü güvenlik açısından daha anlamlı geldi.
 
-**Problem:** Görüntülerde duman ve yangın bölgelerinin otomatik tespiti  
-**Yöntem:** Ultralytics YOLO (nesne tespiti)  
-**Arayüz:** Streamlit dashboard (görüntü yükle → sonuç göster)
+Kullandığım araçlar:
+- YOLO (ultralytics kütüphanesi) -> nesne tespiti
+- OpenCV -> görüntü okuma
+- Streamlit -> basit web arayüzü
+- Veri seti -> Roboflow üzerinden indirdim
 
-## Klasör Yapısı
+## Klasörler ne işe yarıyor
+
+- `app/` -> streamlit arayüzü burada
+- `src/` -> model ile tahmin yapan kod
+- `data/` -> eğitim için kullandığım görseller (dosyalar büyük olduğu için githuba atmadım)
+- `models/` -> eğittikten sonra best.pt dosyası buraya geliyor
+- `notebooks/` -> colabda eğitim yaparken kullandığım notebook
+- `configs/` -> dataset yaml dosyası
+
+## Nasıl çalıştırılır
+
+Önce gerekli paketleri kur:
 
 ```
-duman-yangin-tespiti/
-├── app/                 # Streamlit arayüzü
-├── configs/             # dataset.yaml
-├── data/                # Veri seti (GitHub'a yüklenmez)
-├── models/              # Eğitilmiş model (best.pt)
-├── notebooks/           # Colab eğitim notebook'u
-├── src/                 # Tespit kodu
-└── requirements.txt
-```
-
-## Kurulum
-
-```powershell
-cd duman-yangin-tespiti
-py -m venv .venv
-.venv\Scripts\activate
 pip install -r requirements.txt
 ```
 
-## Arayüzü Çalıştırma
+Sonra arayüzü aç:
 
-```powershell
+```
 streamlit run app/streamlit_app.py
 ```
 
-## Eğitim Akışı
+Tarayıcıda sayfa açılınca fotoğraf yüklüyorsun, sistem tespit ederse kutucuklarla gösteriyor.
 
-1. Roboflow'dan veri seti indir (YOLOv8 formatı)
-2. `notebooks/egitim_colab.ipynb` dosyasını Google Colab'da aç
-3. Modeli eğit, metrikleri kaydet
-4. `best.pt` dosyasını `models/` klasörüne kopyala
+Not: İlk aşamada models klasöründe best.pt yoksa program uyarı verir. Modeli colabda eğitip indirdikten sonra models klasörüne koymak gerekiyor.
 
-## Değerlendirme Metrikleri
+## Model eğitimi (kısaca)
 
-Eğitim sonrası raporda şunlar yer almalı:
+Bilgisayarımda ekran kartı olmadığı için eğitimi Google Colab'da yaptım. Roboflow'dan YOLO formatında veri indirdim, notebooktaki adımları takip ettim. Eğitim bitince çıkan best.pt dosyasını projeye ekledim.
 
-- mAP@50
-- mAP@50-95
-- Precision
-- Recall
-- Eğitim grafikleri (`results.png`, `confusion_matrix.png`)
+Raporda mAP, precision, recall gibi metrikleri ve eğitim sırasında oluşan grafikleri de kullandım.
 
-## Geliştirici
+## İletişim
 
-Mersin Üniversitesi — Dijital Görüntü Çözümleme Final Projesi
+Sorular için ders hocasına mail atılabilir: huseyinyanik@mersin.edu.tr
