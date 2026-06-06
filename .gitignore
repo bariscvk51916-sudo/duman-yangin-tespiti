@@ -6,11 +6,7 @@ __pycache__/
 venv/
 env/
 
-# Veri ve model (büyük dosyalar GitHub'a yüklenmesin)
-data/raw/
-data/train/
-data/valid/
-data/test/
+# Model dosyalari buyuk oldugu icin githuba gitmez
 models/*.pt
 !models/.gitkeep
 runs/

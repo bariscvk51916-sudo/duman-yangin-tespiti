@@ -1,0 +1,13 @@
+train: ../train/images
+val: ../valid/images
+test: ../test/images
+
+nc: 2
+names: ['fire', 'smoke']
+
+roboflow:
+  workspace: aden-kurmanov
+  project: fire-and-smoke-detection-jmxle
+  version: 2
+  license: CC BY 4.0
+  url: https://universe.roboflow.com/aden-kurmanov/fire-and-smoke-detection-jmxle/dataset/2

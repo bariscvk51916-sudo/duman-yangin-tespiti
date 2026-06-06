@@ -1,0 +1,10 @@
+Veri seti kaynagi: Roboflow Universe
+Proje: fire and smoke detection (Aden Kurmanov)
+Link: https://universe.roboflow.com/aden-kurmanov/fire-and-smoke-detection-jmxle/dataset/2
+
+Toplam goruntu: 1797
+Train: %70
+Valid: %20
+Test: %10
+
+Indirme formati: YOLOv8
